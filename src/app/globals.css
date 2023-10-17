@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/*:root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,4 +24,85 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+}*/
+
+ body{
+  margin:0;
+  padding:0;
+  display:flex;
+  justify-content: start;
+  align-items: center;
+  height: 100vh;
+  /*background-color:#F5F5F5 ;*/
+  position: relative;
+  /*cursor:url("https://cdn-icons-png.flaticon.com/128/483/483907.png") 12 12 ,auto;*/
+  
 }
+
+ 
+
+ .sidebar{
+    background-color: white;
+    padding:5px;
+    align-items: center;
+    border-radius: 5px;
+    position: fixed;
+    margin-left: 10px;
+    margin-top: 200px;
+    box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+ }
+
+ ul{
+  list-style: none;
+}
+
+li{
+  padding:10px 5px ;
+  border-radius: 5px;
+  margin-bottom: 5px;  
+}
+
+li:hover{
+  background-color:#a874d2;
+}
+
+.sidebar2{
+  background-color: white;
+  padding:5px;
+  align-items: center;
+  border-radius: 5px;
+  position: fixed;
+  margin-left: 10px;
+  margin-top: 500px;
+  box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+}
+
+.sidebar2 ul li{
+  padding: 5px 8px ;
+}
+
+/* Default cursor style for the button */
+
+.feedbackbutton{
+  margin-top: 800px;
+  margin-left:10px;
+  position: fixed;
+  box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+}
+
+.card{
+  margin-top:20px;
+  margin-left: 10px;
+  position: fixed;
+}
+
+.signup{
+  margin-left:850px;
+  margin-top:20px;
+  position: fixed;
+}
+
+
+
+
+

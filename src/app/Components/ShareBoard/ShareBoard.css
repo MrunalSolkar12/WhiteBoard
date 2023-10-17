@@ -1,0 +1,50 @@
+.share {
+   
+    width: 100%;
+    max-width: 180px;
+    height: 60px;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+   
+    transition: 0.5s ease-in-out;
+    box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+    margin-left: 1700px;
+    margin-top:20px;
+}
+
+.confetti{
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.confetti:hover{
+    background-color: #a874d2;
+}
+ 
+
+  
+
+  .share-signup-button{
+    width:7rem;
+    height:2rem;
+    padding: 0.2rem;
+    color: white;
+    border-radius: 5px;
+    font-size: smaller;
+    font-weight: bold;
+    background-color: #652f90;
+    margin-right: 10px;
+
+  }
+
+  .share-signup-button:hover{
+    background-color: #813cb9;
+  }
+  
+  
+ 
+  
+  
