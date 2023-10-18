@@ -24,23 +24,31 @@ export default function SideBar({
   function handleClickPen() {
     // document.body.style.cursor = `url("https://cdn-icons-png.flaticon.com/128/483/483907.png") , auto`;
     document.body.style.cursor = "url(https://i.ibb.co/brhhfs6/pencil20x20.png),auto";
+    var element = document.getElementById("PenSidebar");
+    element.style.display="block";
+    console.log(element);
+    
     //document.style.cursor.width="10px";
     //document.style.height="10px"
     //document.body.style.cursor = "grab";
-    dispatch({ type: "USER", payload: true });
+    //dispatch({ type: "USER", payload: true });
     setEraserMode(false);
   }
 
+  function CancelPenContainer(){
+    var element = document.getElementById("PenSidebar");
+    element.style.display="none";  
+  }
+
   function handleClickShapes() {
-    document.body.style.cursor =
-      "url(https://i.ibb.co/kyV4Npc/eraser20x20.png),auto";
+    document.body.style.cursor ="url(https://i.ibb.co/kyV4Npc/eraser20x20.png),auto";
     setEraserMode(true);
   }
 
   function handleClickText() {
     document.body.style.cursor = "text";
-  
   }
+
 
   return (
     <>
@@ -68,6 +76,7 @@ export default function SideBar({
                 data-flow="right"
                 onClick={handleClickPen}
                 className="ml-1"
+                id="Pen"
               >
                 <Image
                   src="/images/pencil.png" // Path to your logo image in the "public" directory
@@ -142,6 +151,55 @@ export default function SideBar({
             </li>
           </ul>
         </div>
+
+
+        <div className="PenSidebar mt-10" id="PenSidebar">
+          <ul>
+            <li className="pen-container">
+              <button
+                className="ml-1"
+                onClick={CancelPenContainer}
+              >
+                <Image
+                  src="/images/cross.png" // Path to your logo image in the "public" directory
+                  alt="shapes"
+                  width={30} // Specify the desired width
+                  height={30} // Specify the desired height
+                />
+              </button>
+            </li>
+            <li>
+              <button
+                className="pen-circle1"
+                onClick={toggleRedoMode}
+              >
+                <div className="pen-color1"></div>
+                
+              </button>
+            </li>
+
+            <li>
+              <button
+                className="pen-circle2"
+                onClick={toggleRedoMode}
+              >
+                <div className="pen-color2"></div>
+                
+              </button>
+            </li>
+
+            <li>
+              <button
+                className="pen-circle3"
+                onClick={toggleRedoMode}
+              >
+                <div className="pen-color3"></div>
+                
+              </button>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </>
   );

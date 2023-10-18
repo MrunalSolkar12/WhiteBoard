@@ -36,6 +36,7 @@ body {
   /*background-color:#F5F5F5 ;*/
   position: relative;
   /*cursor:url("https://cdn-icons-png.flaticon.com/128/483/483907.png") 12 12 ,auto;*/
+  cursor:url("https://i.ibb.co/brhhfs6/pencil20x20.png"),auto;
   
 }
 
@@ -62,7 +63,7 @@ li{
   margin-bottom: 5px;  
 }
 
-li:hover{
+li:not(.pen-container)hover{
   background-color:#a874d2;
 }
 
@@ -79,6 +80,18 @@ li:hover{
 
 .sidebar2 ul li{
   padding: 5px 8px ;
+}
+
+#PenSidebar{
+  background-color: white;
+  padding:5px;
+  align-items: center;
+  border-radius: 5px;
+  position: fixed;
+  margin-left: 75px;
+  margin-top: 250px;
+  box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+  display: none;
 }
 
 /* Default cursor style for the button */

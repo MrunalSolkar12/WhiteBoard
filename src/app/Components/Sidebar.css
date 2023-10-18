@@ -110,4 +110,47 @@
     display: none !important;
     
   }
-  
+
+  .pen-circle1{
+    width:30px;
+    height: 30px;
+    border-radius: 100%;
+    border:1px solid gray;
+  }
+  .pen-color1{
+    width:10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 100%;
+    margin-left: 9px;
+  }
+
+  .pen-circle2{
+    width:30px;
+    height: 30px;
+    border-radius: 100%;
+    border:1px solid gray;
+  }
+  .pen-color2{
+    width:18px;
+    height: 18px;
+    background-color: rgb(30, 255, 0);
+    border-radius: 100%;
+    margin-left: 5px;
+  }
+
+  .pen-circle3{
+    width:30px;
+    height: 30px;
+    border-radius: 100%;
+    border:1px solid gray;
+  }
+  .pen-color3{
+    width:22px;
+    height: 22px;
+    background-color: rgb(0, 38, 255);
+    border-radius: 100%;
+    margin-left: 3px;
+  }
+
+ 
