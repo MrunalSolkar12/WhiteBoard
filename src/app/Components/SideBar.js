@@ -7,15 +7,21 @@ import "./Sidebar.css";
 import customCursor from "../../../public/images/pencilcursor.png";
 
 export default function SideBar({
+  color,
+  setDisplayColorPicker,
+  setStrokeColors,
   setEraserMode,
   toggleUndoMode,
   toggleRedoMode,
+  setStrokeWidth
 }) {
-  const [isClicked, setisClicked] = useState(false);
+  
 
-  const { dispatch } = useContext(UserContext);
-  // const customCursorImage = "whiteboard-app//public//images//pencilcursor.png";
+  const [selectedPenCircle, setSelectedPenCircle] = useState(null); 
 
+  var colorRef = useRef(null);
+ console.log("color :::",color);
+  
   function handleClickArrow() {
     document.body.style.cursor = "pointer";
     setEraserMode(true);
@@ -23,11 +29,12 @@ export default function SideBar({
 
   function handleClickPen() {
     // document.body.style.cursor = `url("https://cdn-icons-png.flaticon.com/128/483/483907.png") , auto`;
-    document.body.style.cursor = "url(https://i.ibb.co/brhhfs6/pencil20x20.png),auto";
+    document.body.style.cursor =
+      "url(https://i.ibb.co/brhhfs6/pencil20x20.png) 0 20,auto";
     var element = document.getElementById("PenSidebar");
-    element.style.display="block";
+    element.style.display = "block";
     console.log(element);
-    
+
     //document.style.cursor.width="10px";
     //document.style.height="10px"
     //document.body.style.cursor = "grab";
@@ -35,13 +42,13 @@ export default function SideBar({
     setEraserMode(false);
   }
 
-  function CancelPenContainer(){
+  function CancelPenContainer() {
     var element = document.getElementById("PenSidebar");
-    element.style.display="none";  
+    element.style.display = "none";
   }
 
-  function handleClickShapes() {
-    document.body.style.cursor ="url(https://i.ibb.co/kyV4Npc/eraser20x20.png),auto";
+  function handleClickEraser() {
+    document.body.style.cursor ="url(https://i.ibb.co/kyV4Npc/eraser20x20.png) 0 20,auto";
     setEraserMode(true);
   }
 
@@ -49,17 +56,26 @@ export default function SideBar({
     document.body.style.cursor = "text";
   }
 
+  function setPenColor(width,index){
+    setDisplayColorPicker(true);
+    setStrokeWidth(width);
+    setSelectedPenCircle(index);
+  
+}
+
+
+
 
   return (
     <>
       <div>
-        <div className="sidebar">
+        <div className="sidebar" style={{cursor:"default"}}>
           <ul>
             <li>
               <button
                 data-tooltip="Select"
                 data-flow="right"
-                onClick={handleClickArrow}
+                onClick={handleClickArrow}  
                 className="ml-1.5"
               >
                 <Image
@@ -90,7 +106,7 @@ export default function SideBar({
               <button
                 data-tooltip="Eraser"
                 data-flow="right"
-                onClick={handleClickShapes}
+                onClick={handleClickEraser}
                 className="ml-1"
               >
                 <Image
@@ -119,7 +135,7 @@ export default function SideBar({
           </ul>
         </div>
 
-        <div className="sidebar2 mt-10">
+        <div className="sidebar2 mt-10" style={{cursor:"default"}}>
           <ul>
             <li>
               <button
@@ -152,14 +168,10 @@ export default function SideBar({
           </ul>
         </div>
 
-
-        <div className="PenSidebar mt-10" id="PenSidebar">
+        <div className="PenSidebar mt-10" id="PenSidebar" style={{cursor:"default"}}>
           <ul>
             <li className="pen-container">
-              <button
-                className="ml-1"
-                onClick={CancelPenContainer}
-              >
+              <button className="ml-1" onClick={CancelPenContainer}>
                 <Image
                   src="/images/cross.png" // Path to your logo image in the "public" directory
                   alt="shapes"
@@ -169,37 +181,24 @@ export default function SideBar({
               </button>
             </li>
             <li>
-              <button
-                className="pen-circle1"
-                onClick={toggleRedoMode}
-              >
-                <div className="pen-color1"></div>
-                
+              <button className="pen-circle1" ref={colorRef} onClick={()=>{setPenColor(2,1)}}>
+                <div className="pen-color1"  style={{ backgroundColor: selectedPenCircle === 1 ? color : "red" }}></div>
               </button>
             </li>
 
             <li>
-              <button
-                className="pen-circle2"
-                onClick={toggleRedoMode}
-              >
-                <div className="pen-color2"></div>
-                
+              <button className="pen-circle2" onClick={()=>{setPenColor(7,2)}}>
+                <div className="pen-color2" style={{  backgroundColor: selectedPenCircle === 2 ? color : "green" }}></div>
               </button>
             </li>
 
             <li>
-              <button
-                className="pen-circle3"
-                onClick={toggleRedoMode}
-              >
-                <div className="pen-color3"></div>
-                
+              <button className="pen-circle3" onClick={()=>{setPenColor(10,3)}}>
+                <div className="pen-color3" style={{  backgroundColor: selectedPenCircle === 3 ? color : "blue" }}></div>
               </button>
             </li>
           </ul>
         </div>
-
       </div>
     </>
   );

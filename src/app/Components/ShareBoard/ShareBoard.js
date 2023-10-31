@@ -4,7 +4,7 @@ import Image from "next/image";
 export const ShareBoard = ({setConfetti}) => {
 
     function onClickConfetti() {
-        document.body.style.cursor = "text";
+        
         setConfetti(true);
     
         setInterval(()=>{

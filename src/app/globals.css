@@ -34,9 +34,9 @@ body {
   align-items: center;
   height: 100vh;
   /*background-color:#F5F5F5 ;*/
-  position: relative;
+  position: fixed; /*Before it was position:relative now (27/10/2023) it is change to position:fixed  because sum block was getting added
   /*cursor:url("https://cdn-icons-png.flaticon.com/128/483/483907.png") 12 12 ,auto;*/
-  cursor:url("https://i.ibb.co/brhhfs6/pencil20x20.png"),auto;
+ cursor:url("https://i.ibb.co/brhhfs6/pencil20x20.png") 0 20,auto;
   
 }
 
@@ -49,7 +49,7 @@ body {
     border-radius: 5px;
     position: fixed;
     margin-left: 10px;
-    margin-top: 200px;
+    margin-top: 250px;
     box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
  }
 
@@ -89,7 +89,7 @@ li:not(.pen-container)hover{
   border-radius: 5px;
   position: fixed;
   margin-left: 75px;
-  margin-top: 250px;
+  margin-top: 330px;
   box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
   display: none;
 }
@@ -97,7 +97,7 @@ li:not(.pen-container)hover{
 /* Default cursor style for the button */
 
 .feedbackbutton{
-  margin-top: 800px;
+  margin-top: 870px;
   margin-left:10px;
   position: fixed;
   box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
@@ -113,6 +113,12 @@ li:not(.pen-container)hover{
   margin-left:850px;
   margin-top:20px;
   position: fixed;
+}
+
+.sketchpicker{
+  margin-top: 370px;
+  margin-left: 150px;
+  
 }
 
 
