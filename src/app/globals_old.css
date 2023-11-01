@@ -63,7 +63,7 @@ li{
   margin-bottom: 5px;  
 }
 
-li:not(.pen-circle1)hover{
+li:not(.pen-container)hover{
   background-color:#a874d2;
 }
 
@@ -115,13 +115,6 @@ li:not(.pen-circle1)hover{
   position: fixed;
 }
 
-.share{
-  margin-left: 1720px;
-    margin-top:20px;
-    position: fixed;
-}
-
-
 .sketchpicker{
   margin-top: 370px;
   margin-left: 150px;
@@ -129,25 +122,6 @@ li:not(.pen-circle1)hover{
 }
 
 
-@media screen and (max-width:960px){
-  .signup{
-    margin-left:730px;
-  }
 
-  .share{
-    margin-left: 1560px;
-  }
-  .sidebar{
-    margin-top: 220px;
-    padding: 10px;
-  }
-  .sidebar2{
-    margin-top: 490px;
-    padding: 12px;
-  }
-  .feedbackbutton{
-    margin-top: 760px;
-  }
-}
 
 

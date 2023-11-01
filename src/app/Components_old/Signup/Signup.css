@@ -38,32 +38,12 @@
     font-size: smaller;
     font-weight: bold;
     background-color: #652f90;
-    margin-right: 10px;
   }
 
   .signup-button:hover{
     background-color: #813cb9;
   }
   
-  
-@media screen and (max-width:960px){
-  .h2{
-    font-size: large;
-  }
-  .signup{
-    max-width: 435px;
-  }
-  .signup-button{
-    font-size: medium;
-    width:10rem;
-    padding: 0.4rem;
-    height:3rem;
-    margin-left: 5px;
-  }
-}
-
-
-
   
  
   

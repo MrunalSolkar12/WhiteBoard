@@ -34,13 +34,5 @@
   
   .feedbackbutton:hover span {
     transform: translateX(7px);
-    color: #602c8b;
-  }
-
-
-  @media screen and (max-width:960px) {
-    .feedbackbutton{
-      font-size: 18px;
-      width: 160px;
-    }
+    color: rgb(146, 106, 211);
   }
