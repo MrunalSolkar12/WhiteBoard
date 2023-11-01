@@ -129,7 +129,7 @@ li:not(.pen-circle1)hover{
 }
 
 
-@media screen and (max-width:960px){
+@media screen and (max-width:1900px){
   .signup{
     margin-left:730px;
   }
@@ -147,6 +147,9 @@ li:not(.pen-circle1)hover{
   }
   .feedbackbutton{
     margin-top: 760px;
+  }
+  #PenSidebar{
+    margin-left: 85px;
   }
 }
 

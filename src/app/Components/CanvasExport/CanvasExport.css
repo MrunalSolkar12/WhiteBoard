@@ -51,7 +51,7 @@
      color:rgb(12, 12, 12);
   }
   
-  @media screen and (max-width:960px){
+  @media screen and (max-width:1900px){
       .h1{
         font-size: 20px;
       }
