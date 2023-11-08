@@ -1,9 +1,9 @@
 import "../Feedback/feedback.css";
 
-export const FeedBack = () => {
+export const FeedBack = ({setOpenFeedBack}) => {
   return (
     <>
-      <button className="feedbackbutton">
+      <button className="feedbackbutton" onClick={()=>setOpenFeedBack(true)} >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

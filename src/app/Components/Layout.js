@@ -15,17 +15,16 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      {/*loading ? (
+     { loading ? (
         <Loader />
       ) : (
         <div style={{ display: "flex", flexDirection: "column" }}>
           <main style={{ flex: 1 }}>{children}</main>
         </div>
-      )*/}
+      )
+    }
 
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <main style={{ flex: 1 }}>{children}</main>
-        </div>
+      
     </>
   );
 };

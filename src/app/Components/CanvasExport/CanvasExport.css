@@ -43,12 +43,15 @@
     font-size: 16px;
     font-weight: bold;
   }
+  .card:hover .h1{
+    color:#813cb9;
+  }
   
   .p {
     font-size: 12px;
-    font-weight: lighter;
+    font-weight:bold;
      margin-left:20px;
-     color:rgb(12, 12, 12);
+     color:rgb(83, 83, 83);
   }
   
   @media screen and (max-width:1900px){

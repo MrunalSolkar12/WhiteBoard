@@ -1,8 +1,10 @@
 import "./Signup.css";
 import { useEffect, useRef } from "react";
 
-export const Signup = ({ setOpenSignUp }) => {
+export const Signup = ({ setOpenSignUp,changeLoginPicture }) => {
   const signupRef = useRef(null);
+  
+
 
   useEffect(() => {
     // Define a function to handle clicks outside the signup modal
@@ -20,11 +22,33 @@ export const Signup = ({ setOpenSignUp }) => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, [setOpenSignUp]);
+
+  useEffect(() => {
+    console.log("mrunal", localStorage.getItem("#UC"));
+    const isConnected = localStorage.getItem("#UC") === "true"; // Check if user is connected
+  
+    if (isConnected) {
+      const getUserData = JSON.parse(localStorage.getItem("#U")); // Parse the JSON string from localStorage
+  
+      if (getUserData && getUserData.pictureurl) {
+        console.log(getUserData.pictureurl);
+        changeLoginPicture(getUserData.pictureurl); // Set the state with the picture URL
+      }
+    }
+  }, []);
+  
+  
+  
+ 
+
+  
+  function handleSignUp() {
+      setOpenSignUp(true);
+  }
+
   
 
-  function handleSignUp() {
-    setOpenSignUp(true);
-  }
+
   return (
     <>
       <div className="signup" ref={signupRef}>
@@ -39,6 +63,7 @@ export const Signup = ({ setOpenSignUp }) => {
           Signup for free
         </button>
       </div>
+      
     </>
   );
 };

@@ -116,7 +116,7 @@ li:not(.pen-circle1)hover{
 }
 
 .share{
-  margin-left: 1720px;
+  margin-left: 1680px;
     margin-top:20px;
     position: fixed;
 }
@@ -128,6 +128,11 @@ li:not(.pen-circle1)hover{
   
 }
 
+.reaction-container{
+  margin-left: 1440px;
+  margin-top: 20px;
+}
+
 
 @media screen and (max-width:1900px){
   .signup{
@@ -135,7 +140,7 @@ li:not(.pen-circle1)hover{
   }
 
   .share{
-    margin-left: 1560px;
+    margin-left: 1500px;
   }
   .sidebar{
     margin-top: 220px;
@@ -150,7 +155,17 @@ li:not(.pen-circle1)hover{
   }
   #PenSidebar{
     margin-left: 85px;
+    margin-top: 300px;
   }
+  .sketchpicker{
+    margin-top: 340px;
+    margin-left: 150px;
+  }
+  .reaction-container{
+    margin-left: 1990px;
+    margin-top: 20px;
+  }
+  
 }
 
 

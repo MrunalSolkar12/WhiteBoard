@@ -10,15 +10,16 @@ import { UserContext } from "../Context/context";
 import { useContext } from "react";
 import Layout from "./Layout";
 import { GraphPaper } from "./GraphPaper/GraphPaper";
-import { Slim } from "./GraphPaper/Slim";
 import { ShareBoard } from "./ShareBoard/ShareBoard";
 import { GithubPicker, TwitterPicker, SketchPicker } from "react-color";
 import { SignupPage } from "./Signup/SignupPage";
+import { Emojis } from "./Emojis/Emojis";
+import { ReactionModal } from "./ReactionModal/ReactionModal";
+import { FeedbackPage } from "./Feedback/FeedbackPage";
 
-const styles = {
-  border: "0.0625rem solid #9c9c9c",
-  borderRadius: "0.25rem",
-};
+
+
+
 
 export const NewCanvas = () => {
   const [isEraserMode, setEraserMode] = useState(false);
@@ -28,25 +29,35 @@ export const NewCanvas = () => {
   const [color, setColor] = useState("#F30707");
   const [isStrokeWidth, setStrokeWidth] = useState(2);
   const [openSignUp,setOpenSignUp] = useState(false);
+  const [isEmojis,setEmojis] = useState(false);
+  const [isReactionModal,setReactionModal] = useState(false);
+  const [changeEmoji,setChangeEmoji] = useState("");
+  const [openFeedBack,setOpenFeedBack] = useState(false);
+  const [loginPicture,setLoginPicture] = useState(null);
+  
 
-  const UndoRef = useRef(null);
+  const CanvasRef = useRef(null);
   const colorRef = useRef(null);
+  const emojiRef = useRef(null);
+
+  console.log("width:",window.innerWidth);
+  console.log("height:",window.innerHeight);
 
   const toggleUndoMode = () => {
     console.log("Undo button clicked");
-    if (UndoRef.current) {
-      UndoRef.current.undo();
+    if (CanvasRef.current) {
+      CanvasRef.current.undo();
     }
   };
 
   const toggleRedoMode = () => {
     console.log("Redo button clicked");
-    if (UndoRef.current) {
-      UndoRef.current.redo();
+    if (CanvasRef.current) {
+      CanvasRef.current.redo();
     }
   };
 
-  const handleChangeComplete = (newColor) => {
+  const handleChangeComplete = (newColor) =>{
     setColor(newColor.hex);
     setStrokeColors(newColor.hex);
   };
@@ -58,6 +69,7 @@ export const NewCanvas = () => {
       //console.log("1::",colorRef.current.contains(event.target));
       if (colorRef.current && !colorRef.current.contains(event.target)) {
         setDisplayColorPicker(false);
+        
       }
     };
 
@@ -70,6 +82,51 @@ export const NewCanvas = () => {
     };
   }, [displayColorPicker]);
 
+
+
+  useEffect(() => {
+    const handleOutsideReactionModalClick = (event) => {
+      //console.log("2:::",event.target);
+      //console.log("1::",colorRef.current.contains(event.target));
+      if (emojiRef.current && !emojiRef.current.contains(event.target)) {
+        setReactionModal(false);
+        
+      }
+    };
+
+    if (isReactionModal) {
+      document.addEventListener("mousedown", handleOutsideReactionModalClick);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideReactionModalClick);
+    };
+  }, [isReactionModal]);
+
+
+  //Right Click is no allowed.
+  useEffect(() => {
+    const preventContextMenu = (e) => {
+      e.preventDefault();
+      //alert("Right-clicking is disabled on this page.");
+    };
+
+    const preventInspect = () => {
+      if (typeof window.__REACT_DEVTOOLS_GLOBAL_HOOK__ === 'object') {
+        //alert("Inspect element is disabled on this page.");
+      }
+    };
+
+    document.addEventListener('contextmenu', preventContextMenu);
+    document.addEventListener('keydown', preventInspect);
+
+    return () => {
+      document.removeEventListener('contextmenu', preventContextMenu);
+      document.removeEventListener('keydown', preventInspect);
+    };
+  }, []);
+
+
   console.log("EraseMode", isEraserMode);
 
   const { state } = useContext(UserContext);
@@ -79,8 +136,8 @@ export const NewCanvas = () => {
       <Layout>
         <div style={{ position: "relative" }}>
           <ReactSketchCanvas
-            ref={UndoRef}
-            style=""
+            ref={CanvasRef}
+            
             width={window.innerWidth}
             height={window.innerHeight}
             strokeWidth={isEraserMode ? 20 : isStrokeWidth} // Adjust strokeWidth for eraser mode
@@ -88,13 +145,15 @@ export const NewCanvas = () => {
             onMouseDown={false}
             canvasColor="#F7F7F7"
             eraserWidth="30"
+            
             //backgroundImage="https://upload.wikimedia.org/wikipedia/commons/7/70/Graph_paper_scan_1600x1000_%286509259561%29.jpg"
           />
         </div>
         <div style={{ position: "absolute", top: 0, left: 0 }}>
-          <Signup setOpenSignUp={setOpenSignUp}/>
-          <CanvasExport />
-          <ShareBoard setConfetti={setConfetti} />
+          <Signup setOpenSignUp={setOpenSignUp} changeLoginPicture={setLoginPicture}/>
+          
+          <CanvasExport CanvasRef={CanvasRef} />
+          <ShareBoard setConfetti={setConfetti} setReactionModal={setReactionModal} loginPicture={loginPicture} />
           <SideBar
             color={color}
             setDisplayColorPicker={setDisplayColorPicker}
@@ -104,10 +163,17 @@ export const NewCanvas = () => {
             toggleRedoMode={toggleRedoMode}
             setStrokeWidth={setStrokeWidth}
           />
-          <FeedBack />
+          <FeedBack  setOpenFeedBack={setOpenFeedBack}/>
           { openSignUp &&
-              <SignupPage/>
+              <SignupPage AfterGoogleLogin={setOpenSignUp} setLoginPicture={setLoginPicture}/>
           }
+
+          { openFeedBack &&
+            <FeedbackPage setOpenFeedBack={setOpenFeedBack}/>
+          }
+          {isConfetti ? <GraphPaper /> : ""}
+          {isReactionModal && (<div ref={emojiRef} style={{cursor:"default"}}><ReactionModal setEmojis={setEmojis} setChangeEmoji={setChangeEmoji}/></div>)}
+          { isEmojis && <Emojis changeEmoji={changeEmoji}/>  }
           {displayColorPicker && (
             <div ref={colorRef} style={{cursor:"default"}}>
               <SketchPicker
@@ -117,7 +183,6 @@ export const NewCanvas = () => {
               />
             </div>
           )}
-          {isConfetti ? <GraphPaper /> : ""}
         </div>
       </Layout>
     </>

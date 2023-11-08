@@ -1,10 +1,31 @@
 import "./CanvasExport.css";
 
-export const CanvasExport = () => {
+export const CanvasExport = ({CanvasRef}) => {
+
+  const handleGetImage = (CanvasRef) => {
+    CanvasRef.current
+      .exportImage("png")
+      .then(data => {
+        const link = document.createElement("a");
+        link.href=data;
+        link.download='sketch.png';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
+
+
   return (
     <>
-      <div className="card">
-        <div className="img">
+      <div className="card" style={{cursor:"default"}}>
+        <div className="img" onClick={()=>{handleGetImage(CanvasRef)}}
+            data-tooltip="Export board"
+            data-flow="bottom"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -26,7 +47,7 @@ export const CanvasExport = () => {
           <div className="textContent">
             <p className="h1">Web whiteboard</p>
           </div>
-          <p className="p">Powered by Miro</p>
+          <p className="p">Powered by Pixels</p>
           <div></div>
         </div>
       </div>
