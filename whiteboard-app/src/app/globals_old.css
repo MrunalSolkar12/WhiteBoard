@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}*/
+
+ body{
+  margin:0;
+  padding:0;
+  display:flex;
+  justify-content: start;
+  align-items: center;
+  height: 100vh;
+  /*background-color:#F5F5F5 ;*/
+  position: fixed; /*Before it was position:relative now (27/10/2023) it is change to position:fixed  because sum block was getting added
+  /*cursor:url("https://cdn-icons-png.flaticon.com/128/483/483907.png") 12 12 ,auto;*/
+ cursor:url("https://i.ibb.co/brhhfs6/pencil20x20.png") 0 20,auto;
+  
+}
+
+ 
+
+ .sidebar{
+    background-color: white;
+    padding:5px;
+    align-items: center;
+    border-radius: 5px;
+    position: fixed;
+    margin-left: 10px;
+    margin-top: 250px;
+    box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+ }
+
+ ul{
+  list-style: none;
+}
+
+li{
+  padding:10px 5px ;
+  border-radius: 5px;
+  margin-bottom: 5px;  
+}
+
+li:not(.pen-container)hover{
+  background-color:#a874d2;
+}
+
+.sidebar2{
+  background-color: white;
+  padding:5px;
+  align-items: center;
+  border-radius: 5px;
+  position: fixed;
+  margin-left: 10px;
+  margin-top: 500px;
+  box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+}
+
+.sidebar2 ul li{
+  padding: 5px 8px ;
+}
+
+#PenSidebar{
+  background-color: white;
+  padding:5px;
+  align-items: center;
+  border-radius: 5px;
+  position: fixed;
+  margin-left: 75px;
+  margin-top: 330px;
+  box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+  display: none;
+}
+
+/* Default cursor style for the button */
+
+.feedbackbutton{
+  margin-top: 870px;
+  margin-left:10px;
+  position: fixed;
+  box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+}
+
+.card{
+  margin-top:20px;
+  margin-left: 10px;
+  position: fixed;
+}
+
+.signup{
+  margin-left:850px;
+  margin-top:20px;
+  position: fixed;
+}
+
+.sketchpicker{
+  margin-top: 370px;
+  margin-left: 150px;
+  
+}
+
+
+
+
+

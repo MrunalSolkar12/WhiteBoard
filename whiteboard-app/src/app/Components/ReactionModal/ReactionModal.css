@@ -1,0 +1,36 @@
+.reaction-container {
+   
+    width: 100%;
+    max-width: 230px;
+    height: 60px;
+    background: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    transition: 0.5s ease-in-out;
+    box-shadow: 0px 1px 13px rgba(0,0,0,0.1);
+}
+
+.like{
+    margin: 10px;
+    margin-top: 10px;
+    
+}
+
+.custom-image {
+    width: 45px;
+    height: 28px;
+  }
+
+@media screen and (max-width:1900px){
+    .reaction-container{
+      max-width: 310px;
+    }
+    
+    .custom-image {
+        width: 35px; 
+        height: 18px; 
+      }
+}
